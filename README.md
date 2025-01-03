@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Link Manager - *Keep your links close!*
 
-## Getting Started
+## Project Overview
 
-First, run the development server:
+*The **************************************************************************************************************************************************************************************************************Link Manager************************************************************************************************************************************************************************************************************** is a web application designed to help you save and manage all your favorite and important URLs in one convenient location. With a clean and intuitive interface, you can easily add, update, delete, and fetch links. The application also includes an advanced "************************************************************************************************************************************************************************************************************Undo************************************************************************************************************************************************************************************************************" feature, allowing you to recover accidentally deleted links. All data is securely stored in a MySQL database.*
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Add Links**: *Save your favorite and important URLs.*
+- **Update Links**: *Modify existing URLs and the name.*
+- **Delete Links**: *Remove URLs you no longer need.*
+- **Undo Deletion**: *Recover accidentally deleted links within a short time frame.*
+- **Fetch Links**: *Retrieve and display all your saved URLs.*
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technologies Used
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+*This project leverages modern web development technologies to deliver a seamless user experience:*
 
-## Learn More
+- **Next.js**: *A powerful React framework for building server-rendered applications.*
+- **TypeScript**: *For type safety and enhanced code maintainability.*
+- **Tailwind** **CSS**: *To style the application with minimal effort and maximum flexibility.*
+- **ShadCN**: *For accessible and reusable components.*
+- **Axios**: *To handle API requests effectively.*
+- **MySQL2**: *For efficient database interaction.*
+- **Sonner**: *To display elegant and interactive toast notifications.*
 
-To learn more about Next.js, take a look at the following resources:
+## Backend Setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+*The application uses **************************************************************************************************XAMPP************************************************************************************************** to set up:*
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Apache Server**: *To manage "Php my admin".*
+- **MySQL Server**: *To manage the database for storing links.*
 
-## Deploy on Vercel
+## How It Works
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Adding Links**: *Enter the URL with name and save them to the database.*
+2. **Updating Links**: *Select a link to update its name or URL or both.*
+3. **Deleting Links**: *Remove a link from the database.*
+4. **Undo Deletion**: *Click "Undo" after deletion to restore the link within 15 seconds.*
+5. **Fetching Links**: *All saved links are fetched and displayed dynamically.*
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Installation and Usage
+
+1. Clone the repository:
+   ```bash
+   git clone git@github.com:abhinavchoubey2000/links-manager.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up the database:
+   - *Download Xampp.*
+   - *Start XAMPP and enable Apache and MySQL.*
+   - *Create a database and configure the connection in the project.*
+     - *go to project directory where db.ts is located (./src/app/db.ts)*
+     - *inside db.ts add your hostname, username and password.*
+4. Build the application:
+   ```bash
+   npm run build
+   ```
+5. Start the development server:
+   ```bash
+   npm run dev
+   ```
+6. Access the application at `http://localhost:3000`.
+
+## Future Enhancements
+
+- *Integration with cloud databases for remote access.*
+- *User authentication and role-based access control.*
+- *Enhanced UI/UX with additional customization options.*
+
+## Contributing
+
+*Contributions are welcome! Please fork the repository and submit a pull request with your proposed changes.*
+
+## License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+Thank you for using **Link Manager**! If you encounter any issues or have feature suggestions, feel free to reach out.
+
