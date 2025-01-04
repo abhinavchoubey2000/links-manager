@@ -1,4 +1,5 @@
 "use client";
+
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -13,10 +14,10 @@ import {
 	DialogTitle,
 	DialogTrigger,
 	DialogFooter,
-	DialogClose
+	DialogClose,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Avatar,AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Loader } from "lucide-react";
 import { toast } from "sonner";
@@ -47,7 +48,7 @@ export default function Home() {
 		const savedLinkArray = linksArray;
 		setLoading(true);
 		setLinksArray(linksArray.filter((link) => link.id !== id));
-		let undo = false; 
+		let undo = false;
 		toast.success("Deleted", {
 			description: `You have 15 seconds to undo this action.`,
 			descriptionClassName: "text-red-500",
@@ -80,9 +81,11 @@ export default function Home() {
 		// Delete the link permanently after 15 seconds
 		const deletePermanent = setTimeout(async () => {
 			if (!undo) {
-				await axios.delete(`http://localhost:3000/api/delete-data/${id}`);
+				await axios.delete(
+					`${process.env.NEXT_PUBLIC_BASE_URL}/api/delete-data/${id}`
+				);
 				toast.success("Deleted Successfully", {
-					description: `Deleted ${fullname}.`,
+					description: `Deleted ${fullname}`,
 					position: "top-right",
 					descriptionClassName: "text-red-500",
 					duration: 5000,
@@ -101,7 +104,7 @@ export default function Home() {
 	const editLink = async (id: number, fullname: string, url: string) => {
 		setLoading(true);
 		const response = await axios.put(
-			`http://localhost:3000/api/update-data/`,
+			`${process.env.NEXT_PUBLIC_BASE_URL}/api/update-data/`,
 			{
 				id,
 				fullname,
@@ -114,7 +117,7 @@ export default function Home() {
 			}
 		);
 		toast.success(`Updated to "${updatedName}"`, {
-			description: `From "${fullname}".`,
+			description: `From "${fullname}"`,
 			position: "top-right",
 			descriptionClassName: "text-green-500",
 			duration: 3000,
@@ -143,7 +146,7 @@ export default function Home() {
 	const saveLink = async () => {
 		setLoading(true);
 		const response = await axios.post(
-			"http://localhost:3000/api/add-data",
+			`${process.env.NEXT_PUBLIC_BASE_URL}/api/add-data`,
 			{
 				url: link,
 				fullname: name,
@@ -154,7 +157,7 @@ export default function Home() {
 				},
 			}
 		);
-		toast.success(`${name}.`, {
+		toast.success(`${name}`, {
 			description: `Added successfully.`,
 			descriptionClassName: "text-green-500",
 			position: "top-right",
@@ -170,7 +173,9 @@ export default function Home() {
 	// Function to fetch data from the server
 	const fetchData = async () => {
 		setLoading(true);
-		const response = await axios.get("http://localhost:3000/api/get-data");
+		const response = await axios.get(
+			`${process.env.NEXT_PUBLIC_BASE_URL}/api/get-data`
+		);
 		const data = response.data;
 		setLinksArray(data.data);
 		setLoading(false);
@@ -184,7 +189,7 @@ export default function Home() {
 			console.log("cleanup");
 		};
 	}, []);
-	
+
 	return (
 		<div className="flex flex-col items-center w-full h-screen">
 			<h2 className="scroll-m-20 border-b py-2 text-3xl font-semibold tracking-tight first:mt-0">

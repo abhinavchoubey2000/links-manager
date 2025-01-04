@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "dotenv/config";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import { Toaster } from "@/components/ui/soner";
