@@ -24,6 +24,7 @@ import { toast } from "sonner";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
+import { axiosConfig } from "./axios.config";
 
 interface ResponseDataInterface {
 	url: string;
@@ -81,9 +82,7 @@ export default function Home() {
 		// Delete the link permanently after 15 seconds
 		const deletePermanent = setTimeout(async () => {
 			if (!undo) {
-				await axios.delete(
-					`${process.env.NEXT_PUBLIC_BASE_URL}/api/delete-data/${id}`
-				);
+				await axiosConfig.delete(`/api/delete-data/${id}`);
 				toast.success("Deleted Successfully", {
 					description: `Deleted ${fullname}`,
 					position: "top-right",
@@ -103,8 +102,8 @@ export default function Home() {
 	// Function to edit a link
 	const editLink = async (id: number, fullname: string, url: string) => {
 		setLoading(true);
-		const response = await axios.put(
-			`${process.env.NEXT_PUBLIC_BASE_URL}/api/update-data/`,
+		const response = await axiosConfig.put(
+			`/api/update-data/`,
 			{
 				id,
 				fullname,
@@ -145,18 +144,10 @@ export default function Home() {
 	// Function to save a link
 	const saveLink = async () => {
 		setLoading(true);
-		const response = await axios.post(
-			`${process.env.NEXT_PUBLIC_BASE_URL}/api/add-data`,
-			{
-				url: link,
-				fullname: name,
-			},
-			{
-				headers: {
-					"Content-Type": "application/json",
-				},
-			}
-		);
+		const response = await axiosConfig.post(`/api/add-data`, {
+			url: link,
+			fullname: name,
+		});
 		toast.success(`${name}`, {
 			description: `Added successfully.`,
 			descriptionClassName: "text-green-500",
@@ -173,9 +164,7 @@ export default function Home() {
 	// Function to fetch data from the server
 	const fetchData = async () => {
 		setLoading(true);
-		const response = await axios.get(
-			`${process.env.NEXT_PUBLIC_BASE_URL}/api/get-data`
-		);
+		const response = await axiosConfig.get(`/api/get-data`);
 		const data = response.data;
 		setLinksArray(data.data);
 		setLoading(false);
