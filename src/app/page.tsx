@@ -23,7 +23,6 @@ import { Loader } from "lucide-react";
 import { toast } from "sonner";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import axios from "axios";
 import { axiosConfig } from "./axios.config";
 
 interface ResponseDataInterface {
