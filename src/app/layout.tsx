@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/soner";
 export const metadata: Metadata = {
 	title: "Links Manager",
 	description: "Manage your links with ease. Links Manager is a free and open-source link management tool.",
+	
 };
 
 export default function RootLayout({
