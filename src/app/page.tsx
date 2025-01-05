@@ -53,19 +53,6 @@ export default function Home() {
 			description: `You have 15 seconds to undo this action.`,
 			descriptionClassName: "text-red-500",
 			position: "top-right",
-			closeButton: true,
-			cancelButtonStyle: {
-				backgroundColor: "red",
-				color: "white",
-				border: "none",
-				borderRadius: "5px",
-				padding: "5px 10px",
-				margin: "0 5px",
-				cursor: "pointer",
-			},
-			onDismiss: () => {
-				undo = false;
-			},
 			duration: 15000,
 			action: {
 				label: "Undo",
@@ -180,11 +167,11 @@ export default function Home() {
 
 	return (
 		<div className="flex flex-col items-center w-full h-screen">
-			<h2 className="scroll-m-20 border-b py-2 text-3xl font-semibold tracking-tight first:mt-0">
+			<h2 className="scroll-m-20 border-b py-2 text-3xl font-semibold tracking-tight first:mt-0 text-center">
 				Keep Your Favourite Links Close
 			</h2>
 
-			<div className="w-4/5 h-4/5 bg-[#1f1f1f] my-8 rounded-md flex flex-wrap items-center justify-center gap-4">
+			<div className="w-full h-4/5 bg-[#1f1f1f] my-8 rounded-md flex flex-wrap items-center justify-center gap-4 lg:w-4/5 overflow-y-auto">
 				{loading ? (
 					<Loader className="w-20 h-20 animate-spin" />
 				) : (
@@ -193,14 +180,14 @@ export default function Home() {
 							? linksArray.map((responseData: ResponseDataInterface, index) => {
 									return (
 										<div
-											className="flex flex-row gap-1 justify-center items-center"
+											className="flex flex-row gap-1 justify-center items-center "
 											key={index}
 										>
 											<Link href={responseData.url}>
 												<Button
 													title={responseData.fullname}
 													variant={"secondary"}
-													className="flex"
+													className="flex w-40"
 												>
 													<Avatar className="h-6 w-6">
 														<AvatarImage

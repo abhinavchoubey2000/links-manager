@@ -7,10 +7,3 @@ export const connection = mysql.createPool({
 	password: String(process.env.SQL_PASSWORD),
 	database: String(process.env.SQL_DATABASE_NAME),
 });
-console.log({
-	host: String(process.env.SQL_HOSTNAME),
-	user: String(process.env.SQL_USERNAME),
-	password: String(process.env.SQL_PASSWORD),
-	database: String(process.env.SQL_DATABASENAME),
-	port: Number(process.env.SQL_PORT),
-});
